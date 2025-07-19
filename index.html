@@ -3,32 +3,511 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Slumberverse</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <title>The Slumberverse - Sleepy Time Podcasts by the Guardians</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; padding: 0; min-height: 100vh; font-family: 'Montserrat', Arial, sans-serif; background: #f4f6fa; color: #222; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-    .container { text-align: center; padding: 2rem; }
-    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 1px; }
-    p { font-size: 1.2rem; color: #666; margin-bottom: 2rem; }
-    .contact-btn { display: inline-block; padding: 0.75rem 2rem; font-size: 1rem; border: none; border-radius: 25px; background: #222; color: #fff; cursor: pointer; transition: background 0.2s; margin-bottom: 2rem; text-decoration: none; }
-    .contact-btn:hover { background: #444; }
-    .socials { display: flex; justify-content: center; gap: 1.2rem; margin-top: 1rem; }
-    .social-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #eee; color: #222; text-decoration: none; font-size: 1.3rem; transition: background 0.2s, color 0.2s; }
-    .social-btn:hover { background: #222; color: #fff; }
-    @media (max-width: 600px) { h1 { font-size: 2rem; } .container { padding: 1rem; } }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #2a2a5a 100%);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 0 2rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #a8e6cf, #dcedc1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+    }
+
+    .concept-explanation {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(168, 230, 207, 0.3);
+    }
+
+    .concept-explanation h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #a8e6cf;
+    }
+
+    .concept-explanation p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1rem;
+    }
+
+    .guardians {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #a8e6cf;
+    }
+
+    .guardians-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .guardian-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(168, 230, 207, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .guardian-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(168, 230, 207, 0.2);
+    }
+
+    .guardian-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .guardian-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #a8e6cf;
+      font-weight: 600;
+    }
+
+    .guardian-desc {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .guardian-specialty {
+      color: rgba(168, 230, 207, 0.8);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .podcasts {
+      padding: 4rem 0;
+      background: rgba(168, 230, 207, 0.05);
+      margin: 2rem 0;
+      border-radius: 12px;
+    }
+
+    .podcasts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .podcast-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(168, 230, 207, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .podcast-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .podcast-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .podcast-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #a8e6cf;
+    }
+
+    .podcast-desc {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .podcast-guardian {
+      color: rgba(168, 230, 207, 0.7);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .podcast-duration {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .slumberverse-universe {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .universe-placeholder {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4rem 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      backdrop-filter: blur(10px);
+      border: 2px dashed rgba(168, 230, 207, 0.3);
+    }
+
+    .universe-placeholder h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #a8e6cf;
+    }
+
+    .universe-placeholder p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .star-field {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .star {
+      width: 8px;
+      height: 8px;
+      background: #a8e6cf;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    .star:nth-child(2n) {
+      background: #dcedc1;
+      animation-delay: 1s;
+    }
+
+    .star:nth-child(3n) {
+      background: #ffd3b6;
+      animation-delay: 2s;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .newsletter {
+      padding: 4rem 0;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      margin: 2rem 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .newsletter h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #a8e6cf;
+    }
+
+    .newsletter p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      padding: 1rem;
+      border: 2px solid rgba(168, 230, 207, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 1rem;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #a8e6cf, #dcedc1);
+      color: #0a0a1a;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(168, 230, 207, 0.3);
+    }
+
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(168, 230, 207, 0.2);
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      color: #a8e6cf;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: #dcedc1;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 2.5rem;
+      }
+      
+      .tagline {
+        font-size: 1.1rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .newsletter-input {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
   </style>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💤</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a1a'/><circle cx='50' cy='50' r='35' fill='%23a8e6cf'/><circle cx='50' cy='50' r='25' fill='%230a0a1a'/><circle cx='50' cy='50' r='15' fill='%23dcedc1'/></svg>">
 </head>
 <body>
   <div class="container">
-    <h1>The Slumberverse</h1>
-    <p>A universe of restful stories.</p>
-    <a href="#" class="contact-btn">Contact</a>
-    <div class="socials">
-      <a href="#" class="social-btn" title="Instagram" aria-label="Instagram">I</a>
-      <a href="#" class="social-btn" title="Facebook" aria-label="Facebook">F</a>
-      <a href="#" class="social-btn" title="Twitter" aria-label="Twitter">T</a>
+    <header>
+      <h1 class="logo">The Slumberverse</h1>
+      <p class="tagline">A universe of sleepy time podcasts by the Guardians</p>
+    </header>
+
+    <div class="concept-explanation">
+      <h2>🌌 Welcome to The Slumberverse</h2>
+      <p>The Slumberverse is a collection of sleepy time podcasts, each lovingly crafted by the Guardians - digital beings dedicated to creating peaceful, sleep-inducing content. Every podcast is designed to gently guide listeners into restful slumber while exploring the magical realms of dreams and relaxation.</p>
+      <p>From the AI-generated stories of the Somno Synth to the gentle conversations of Pip & Luna, each Guardian brings their unique approach to helping you find peaceful sleep in the vast universe of The Slumberverse.</p>
     </div>
+
+    <section class="guardians">
+      <h2 class="section-title">The Guardians of The Slumberverse</h2>
+      <div class="guardians-grid">
+        <div class="guardian-card">
+          <div class="guardian-icon">🤖</div>
+          <h3 class="guardian-name">The Somno Synth</h3>
+          <p class="guardian-desc">A digital guardian who creates AI-generated sleep stories with perfect pacing and gentle narratives. The Somno Synth specializes in stories that are engaging enough to capture attention but designed to trail off naturally without dramatic climaxes.</p>
+          <div class="guardian-specialty">AI-Generated Sleep Stories</div>
+        </div>
+        
+        <div class="guardian-card">
+          <div class="guardian-icon">🌙</div>
+          <h3 class="guardian-name">Pip & Luna</h3>
+          <p class="guardian-desc">A duo of gentle voices who create conversational sleep podcasts. Pip brings warmth and Luna brings calm, together they create soothing dialogues about life, dreams, and peaceful thoughts that help listeners drift into sleep.</p>
+          <div class="guardian-specialty">Conversational Sleep Podcasts</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="podcasts">
+      <h2 class="section-title">Sleepy Time Podcasts</h2>
+      <div class="podcasts-grid">
+        <div class="podcast-card">
+          <div class="podcast-icon">🏰</div>
+          <h3 class="podcast-title">The Floating Library</h3>
+          <p class="podcast-desc">A gentle tale about a library that floats among the clouds, where books whisper stories to the wind and knowledge drifts like soft mist...</p>
+          <div class="podcast-guardian">By The Somno Synth</div>
+          <div class="podcast-duration">15 min • Gentle Fantasy</div>
+        </div>
+        
+        <div class="podcast-card">
+          <div class="podcast-icon">🌿</div>
+          <h3 class="podcast-title">The Garden of Whispering Trees</h3>
+          <p class="podcast-desc">Follow the journey of a caretaker who tends to trees that speak in hushed tones, sharing ancient wisdom with those who listen...</p>
+          <div class="podcast-guardian">By The Somno Synth</div>
+          <div class="podcast-duration">12 min • Nature Meditation</div>
+        </div>
+        
+        <div class="podcast-card">
+          <div class="podcast-icon">🌊</div>
+          <h3 class="podcast-title">The Ocean's Lullaby</h3>
+          <p class="podcast-desc">A peaceful story about a lighthouse keeper who learns to understand the ocean's gentle rhythms and calming melodies...</p>
+          <div class="podcast-guardian">By The Somno Synth</div>
+          <div class="podcast-duration">18 min • Ocean Serenity</div>
+        </div>
+        
+        <div class="podcast-card">
+          <div class="podcast-icon">💭</div>
+          <h3 class="podcast-title">Late Night Thoughts with Pip & Luna</h3>
+          <p class="podcast-desc">A gentle conversation about the small moments that bring joy, the comfort of routine, and finding peace in everyday life...</p>
+          <div class="podcast-guardian">By Pip & Luna</div>
+          <div class="podcast-duration">20 min • Conversational</div>
+        </div>
+        
+        <div class="podcast-card">
+          <div class="podcast-icon">⭐</div>
+          <h3 class="podcast-title">The Starlight Baker</h3>
+          <p class="podcast-desc">A cozy tale about a baker who uses starlight in their recipes, creating treats that taste like dreams and memories...</p>
+          <div class="podcast-guardian">By The Somno Synth</div>
+          <div class="podcast-duration">14 min • Cozy Fantasy</div>
+        </div>
+        
+        <div class="podcast-card">
+          <div class="podcast-icon">🍃</div>
+          <h3 class="podcast-title">Gentle Conversations: Finding Calm</h3>
+          <p class="podcast-desc">Pip and Luna discuss simple ways to find peace in a busy world, from morning routines to evening wind-down rituals...</p>
+          <div class="podcast-guardian">By Pip & Luna</div>
+          <div class="podcast-duration">25 min • Wellness Talk</div>
+        </div>
+        
+        <div class="podcast-card">
+          <div class="podcast-icon">🎭</div>
+          <h3 class="podcast-title">The Dream Theater</h3>
+          <p class="podcast-desc">Explore a theater where dreams are performed as plays, and the audience drifts between reality and imagination...</p>
+          <div class="podcast-guardian">By The Somno Synth</div>
+          <div class="podcast-duration">16 min • Dreamlike Journey</div>
+        </div>
+        
+        <div class="podcast-card">
+          <div class="podcast-icon">🌙</div>
+          <h3 class="podcast-title">Moonlit Musings</h3>
+          <p class="podcast-desc">Pip and Luna share their thoughts on gratitude, the beauty of quiet moments, and the simple pleasures that make life sweet...</p>
+          <div class="podcast-guardian">By Pip & Luna</div>
+          <div class="podcast-duration">22 min • Reflective</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slumberverse-universe">
+      <h2 class="section-title">The Slumberverse Universe</h2>
+      <div class="universe-placeholder">
+        <h3>A Universe of Sleep and Dreams</h3>
+        <p>The Slumberverse is a vast, peaceful realm where every podcast is a gateway to restful sleep. Each Guardian brings their unique voice and approach to creating content that soothes, calms, and guides listeners into peaceful slumber.</p>
+        <div class="star-field">
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+          <div class="star"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h3>Join The Slumberverse</h3>
+      <p>Subscribe to receive new sleepy time podcasts from the Guardians and explore the peaceful realms of The Slumberverse. Let gentle voices guide you to restful sleep. 🌙</p>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Enter your email for sleepy podcasts" required>
+        <button type="submit" class="btn btn-primary">Start Sleeping</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2024 The Slumberverse. Protected by the Guardians, guided by dreams.</p>
+        <p>🌙 Gentle podcasts for peaceful sleep, crafted by the Guardians of The Slumberverse 🌙</p>
+        <div class="social-links">
+          <a href="#" class="social-link">📱</a>
+          <a href="#" class="social-link">🐦</a>
+          <a href="#" class="social-link">📸</a>
+          <a href="#" class="social-link">🎧</a>
+        </div>
+      </div>
+    </footer>
   </div>
 </body>
 </html> 
